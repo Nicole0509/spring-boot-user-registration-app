@@ -1,7 +1,9 @@
 package org.example.userregistration;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmailNotificationService implements NotificationService {
     @Value("${spring.application.name}")
     private String host;
@@ -11,9 +13,10 @@ public class EmailNotificationService implements NotificationService {
 
     @Override
     public void send (String message, String recipientEmail) {
+        System.out.println("SENDING EMAIL");
+        System.out.println("Sending email to " + recipientEmail);
         System.out.println("Host name: " + host);
         System.out.println("Port: " + port);
-        System.out.println("Sending email to " + recipientEmail);
         System.out.println("Message: " + message);
     }
 }

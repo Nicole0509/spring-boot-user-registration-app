@@ -1,5 +1,8 @@
 package org.example.userregistration;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class User {
     private int id;
     private String name;
