@@ -10,14 +10,10 @@ public class UserRegistrationApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(UserRegistrationApplication.class, args);
         var userService = context.getBean(UserService.class);
-        var user = context.getBean(User.class);
 
-        user.setId(1);
-        user.setName("Nicole");
-        user.setEmail("nicole@gmail.com");
-        user.setPassword("nicole123456");
-
-        userService.register(user);
+        userService.register(new User(1,"Nicole","nicole@gmail.com","nicole123456"));
+        userService.register(new User(2,"Nicole","nicoley@gmail.com","nicole123456"));
+        userService.register(new User(3,"Nicole","nicole@gmail.com","nicole123456"));
 
         context.close();
     }

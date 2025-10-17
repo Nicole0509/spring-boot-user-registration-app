@@ -2,8 +2,6 @@ package org.example.userregistration;
 
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 @Service
 public class UserService {
 
@@ -17,8 +15,13 @@ public class UserService {
     }
 
     public void register (User user){
+
+        if(this.user.findByEmail(user.getEmail()) != null){
+            throw new IllegalArgumentException("User with email: " + user.getEmail() + " already exists");
+        }
+
         this.user.save(user);
-        this.notification.send("Hello World!", user.getEmail());
+        this.notification.send(user.getName() + " was successfully registered", user.getEmail());
     }
 
 }
