@@ -9,6 +9,7 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public void save(User user) {
+        users.put(user.getEmail(), user);
         System.out.println("User saved!");
     }
 
